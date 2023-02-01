@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+{% load static %}
+  {% block corecss%}
+  {{block.super}}
+  <!-- <link rel="stylesheet" href="{% static 'course/css/course.css' %}"> -->
+  {% endblock corecss%}
+{% block title %}Django{% endblock title %}
+
+{% block coreimg%} <img src="{% static 'core/images/img2.jpg'%}" alt="Django" />{% endblock coreimg%}
+
+{% block content %}
+<h2>Welcome to Django Course Page</h2>
+{% endblock content %}
