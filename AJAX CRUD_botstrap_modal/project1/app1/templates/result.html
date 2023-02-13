@@ -1,0 +1,67 @@
+<table class="table table-bordered">
+    <thead class="alert-success">
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for member in members %}
+        <tr>
+            <td>{{ member.firstname }}</td>
+            <td>{{ member.lastname }}</td>
+            <td><center>
+
+
+                <!-- <a class="btn btn-warning edit" name="{{ member.id }}">Edit</a>  -->
+
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addnew">
+                   edit
+                  </button>
+                 <!-- Modal -->
+                <div class="modal fade" id="addnew" tabindex="-1" aria-labelledby="addnewLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="addnewLabel">New Member</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                        <form class="" method="post">
+                            {% csrf_token %}
+                            <div class="form-inline">
+                                <label>Firstname</label>
+                                <input type="text" id="firstname" name="firstname" class="form-control"/>
+                                <label>Lastname</label>
+                                <input type="text" id="lastname" name="lastname" class="form-control"/>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="update">Submit</button>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+                </div> 
+
+            
+
+
+
+
+
+
+
+                <a class="btn btn-danger delete" name="{{ member.id }}">Delete</a></center>
+
+
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
