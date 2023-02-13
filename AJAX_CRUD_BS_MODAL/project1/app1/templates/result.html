@@ -1,0 +1,64 @@
+<table class="table table-bordered">
+    <thead class="alert-success">
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for member in members %}
+        <tr>
+            <td>{{ member.firstname }}</td>
+            <td>{{ member.lastname }}</td>
+            <td>
+                <center>
+                    <!-- <a class="btn btn-warning edit" name="{{ member.id }}">Edit</a>  -->
+
+                    <button type="button" class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#addnew"
+                        name="{{ member.id }}">
+                        edit
+                    </button>
+                    <a class="btn btn-danger delete" name="{{ member.id }}">Delete</a>
+                    
+                </center>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Edit Modal start -->
+<div class="modal fade" id="editnew1" tabindex="-1" aria-labelledby="editnewLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="editnewLabel"> Update  Member</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+        <form class="" method="post">
+            {% csrf_token %}
+            <input type="hidden" id="member_id" value="{{ member.id }}" />
+            <div class="form-inline">
+            <label>Firstname</label>
+            <input type="text" id="firstname" name="firstname" class="form-control" value="{{ member.firstname }}"
+                required="required" />
+            <label>Lastname</label>
+            <input type="text" id="lastname" name="lastname" class="form-control" value="{{ member.lastname }}"
+                required="required" />
+            </div>
+
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="update">Submit</button>
+        </form>
+        </div>
+    </div>
+    </div>
+</div>
+<!-- Edit Modal end -->
+
+text

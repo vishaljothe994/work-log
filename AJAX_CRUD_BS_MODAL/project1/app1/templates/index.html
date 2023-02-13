@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="myFunction()" data-bs-target="#addnew">
+  Add New
+</button>
+<script>
+  function myFunction() {
+    $("#form_id").trigger("reset");
+  }
+  </script>
+  
+
+<!-- Add Modal -->
+<div class="modal fade" id="addnew" tabindex="-1" aria-labelledby="addnewLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addnewLabel">New Member</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form class="" method="post" id="form_id">
+          {% csrf_token %}
+          <div class="form-inline">
+            <label>Firstname</label>
+            <input type="hidden" id="member_key"/>
+            <input type="text" id="firstname" name="firstname" class="form-control" />
+            <label>Lastname</label>
+            <input type="text" id="lastname" name="lastname" class="form-control" />
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="create">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br />
+<div id="result"></div>
+
+
+{% endblock %}
